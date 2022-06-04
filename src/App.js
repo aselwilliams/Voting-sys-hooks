@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import {useState} from 'react'
 import './App.css';
+import data from './data'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+    {this.state.teams.map((team, index)=> {
+    return (
+      <div className="card" key={team.name}>
+        <img src={team.img} alt={`${team.name} logo`} />
+        <h3>{team.name}</h3>
+        <button onClick={()=>this.handleVote(index)}>Vote</button>
+        
+    <div className="lower">
+        <p>Vote count: <span id="span1">{team.vote}</span></p>
+        <button onClick={()=>this.handleClear(index)} type="reset" className='clear-btn'>Clear</button>
+    </div>
+    </div>
+    )
+    })}
     </div>
   );
 }
 
 export default App;
+
